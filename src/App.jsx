@@ -1,17 +1,15 @@
 import React from "react";
-import Button from "./components/Button";
-import "./App.css";
+import { ChakraProvider } from "@chakra-ui/react";
+import NavBar from "./components/NavBar/NavBar";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 
-function App() {
+
+const App = () => {
   return (
-    <React.Fragment>
-      <div>
-        <Button label="Login" />
-        <Button label="Contactame" />
-        <Button label="Logout" />
-      </div>
-    </React.Fragment>
+    <ChakraProvider>
+      <NavBar/>
+      <ItemListContainer greeting="Kingston Coffee"/>
+    </ChakraProvider>
   );
-}
-
+};
 export default App;
