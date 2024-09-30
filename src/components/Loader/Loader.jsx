@@ -1,6 +1,6 @@
 import { Flex, Spinner } from "@chakra-ui/react";
 
-const Loader = () => {
+export const Loader = () => {
   return (
     <Flex
       height={"90vh"}
@@ -19,4 +19,3 @@ const Loader = () => {
   );
 };
 
-export default Loader;
