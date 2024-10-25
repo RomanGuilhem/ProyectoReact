@@ -20,24 +20,27 @@ import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 import { CartWidget } from '../CartWidget/CartWidget'
 import { CiCoffeeBean } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import { useCategory } from "../../hooks";
+import { useItems } from '../../hooks';
+
 
 export const NavBar = () => {
     const { colorMode, toggleColorMode } = useColorMode()
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const { categories } = useCategory();
-    
+    const { itemsData } = useItems("categories");
+
     return (
         <>
             <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
                 <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-                    <Box><CiCoffeeBean style={{ fontSize: "30px" }} /></Box>
+                    <Link to="/">
+                    <Box><CiCoffeeBean style= {{ fontSize: "30px" }} /></Box>
+                    </Link>
                     <Menu>
-                        <MenuButton as={Button} cursor="pointer" style={{ marginLeft: 30 }}>
+                        <MenuButton as={Button} cursor="pointer" style={{ marginLeft: 150 }}>
                             Categorias
                         </MenuButton>
                         <MenuList height={"300px"} overflowY={"scroll"}>
-                            {categories.map((category) => (
+                            {itemsData.map((category) => (
                                 <MenuItem key={category.slug}>
                                     <Link to={`/category/${category.slug}`}>{category.name}</Link>
                                 </MenuItem>
@@ -59,7 +62,7 @@ export const NavBar = () => {
                                     minW={0}>
                                     <Avatar
                                         size={'sm'}
-                                        src={''}
+                                        src={'https://fotos.perfil.com/2023/06/13/trim/720/410/messi-copa-del-mundo-1588008.jpg'}
                                     />
                                 </MenuButton>
                                 <MenuList alignItems={'center'}>
@@ -67,7 +70,7 @@ export const NavBar = () => {
                                     <Center>
                                         <Avatar
                                             size={'2xl'}
-                                            src={''}
+                                            src={'https://fotos.perfil.com/2023/06/13/trim/720/410/messi-copa-del-mundo-1588008.jpg'}
                                         />
                                     </Center>
                                     <br />
@@ -76,9 +79,11 @@ export const NavBar = () => {
                                     </Center>
                                     <br />
                                     <MenuDivider />
-                                    <MenuItem>Your Servers</MenuItem>
-                                    <MenuItem>Account Settings</MenuItem>
-                                    <MenuItem>Logout</MenuItem>
+                                    <Link to="/">
+                                    <MenuItem>Inicio</MenuItem>
+                                    </Link>
+                                    <MenuItem>Ajustes</MenuItem>
+                                    <MenuItem>Cerrar sesion</MenuItem>
                                 </MenuList>
                             </Menu>
                         </Stack>
